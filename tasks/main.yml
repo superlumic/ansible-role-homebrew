@@ -1,10 +1,15 @@
 ---
 
-- name: Install homebrew via the curl oneliner.
-  command: ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" creates=/usr/local/bin/brew
+- name: install homebrew via the curl oneliner
+  shell: ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  args:
+    creates: /usr/local/bin/brew
 
-- name: Update and upgrade homebrew.
+- name: update and upgrade homebrew
   homebrew: update_homebrew=yes upgrade_all=yes
 
-- name: Install homebrew cask.
+- name: install homebrew cask
   homebrew: name=caskroom/cask/brew-cask state=latest
+
+- name: install homebrew services
+  homebrew_tap: tap=homebrew/services state=present
