@@ -1,5 +1,25 @@
 ---
 
+- name: get git username
+  shell: git config --global --get user.name
+  register: git_user_name_result
+  changed_when: False
+  ignore_errors: yes
+
+- name: get git user email
+  shell: git config --global --get user.email
+  register: git_user_email_result
+  changed_when: False
+  ignore_errors: yes
+
+- name: set git username
+  shell: git config --global user.name "{{git_user_name}}"
+  when: git_user_email_result.stdout != "{{git_user_name}}"
+
+- name: set git user email
+  shell: git config --global user.email "{{git_user_email}}"
+  when: git_user_email_result.stdout != "{{git_user_email}}"
+
 - name: install homebrew via the curl oneliner
   shell: ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   args:
