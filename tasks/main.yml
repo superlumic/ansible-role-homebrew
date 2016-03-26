@@ -29,7 +29,7 @@
   homebrew: update_homebrew=yes upgrade_all=yes
 
 - name: install homebrew cask
-  homebrew: name=caskroom/cask/brew-cask state=latest
+  homebrew_tap: tap=caskroom/cask state=present
 
 - name: install homebrew services
   homebrew_tap: tap=homebrew/services state=present
