@@ -14,11 +14,11 @@
 
 - name: set git username
   shell: git config --global user.name "{{git_user_name}}"
-  when: git_user_email_result.stdout != "{{git_user_name}}"
+  when: git_user_email_result.stdout != "git_user_name|string"
 
 - name: set git user email
   shell: git config --global user.email "{{git_user_email}}"
-  when: git_user_email_result.stdout != "{{git_user_email}}"
+  when: git_user_email_result.stdout != "git_user_email|string"
 
 - name: install homebrew via the curl oneliner
   shell: ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
