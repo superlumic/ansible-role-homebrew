@@ -28,8 +28,5 @@
 - name: update and upgrade homebrew
   homebrew: update_homebrew=yes upgrade_all=yes
 
-- name: install homebrew cask
-  homebrew_tap: tap=caskroom/cask state=present
-
 - name: install homebrew services
   homebrew_tap: tap=homebrew/services state=present
