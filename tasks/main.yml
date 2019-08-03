@@ -30,3 +30,6 @@
 
 - name: install homebrew services
   homebrew_tap: tap=homebrew/services state=present
+
+- name: install homebrew fonts
+  homebrew_tap: tap=homebrew/cask-fonts state=present
